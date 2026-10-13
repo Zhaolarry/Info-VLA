@@ -1,0 +1,71 @@
+[project]
+name = "openpi"
+version = "0.1.0"
+description = "OpenPI — π₀ robot foundation model with continual learning (PyTorch)"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    # --- Core ML / DL ---
+    "torch>=2.1.0",
+    "torchvision",
+    "jax>=0.4.20",
+    "jaxlib>=0.4.20",
+    "flax>=0.8.0",
+    "optax>=0.1.7",
+    "orbax-checkpoint>=0.4.0",
+    "ml_collections",
+
+    # --- Transformers / NLP ---
+    "transformers>=4.40.0",
+    "sentencepiece>=0.1.99",
+    "safetensors>=0.4.0",
+
+    # --- Data / RL ---
+    "tensorflow>=2.13.0",
+    "tensorflow-datasets>=4.9.0",
+    "einops>=0.7.0",
+    "augmax>=0.3.0",
+    "lerobot>=0.2.0",
+
+    # --- Config / CLI ---
+    "tyro>=0.5.0",
+    "pydantic>=2.0.0",
+    "numpydantic>=0.3.0",
+
+    # --- Logging / Monitoring ---
+    "wandb>=0.15.0",
+    "tqdm>=4.64.0",
+    "tqdm_loggable>=0.2.0",
+
+    # --- Serving ---
+    "flask>=2.3.0",
+    "websockets>=11.0",
+
+    # --- Utilities ---
+    "numpy>=1.22.0,<2.0.0",
+    "etils[epath]>=1.2.0",
+    "jaxtyping>=0.2.0",
+    "beartype>=0.15.0",
+    "chex>=0.1.0",
+    "fsspec>=2024.0.0",
+    "filelock>=3.12.0",
+    "pynvml>=11.0.0",
+    "pillow>=9.0.0",
+    "dm-tree>=0.1.8",
+    "matplotlib>=3.7.0",
+    "pytest>=7.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+# Allow direct pip installs for packages with complex build requirements
+# JAX/JAXlib with CUDA support may need --find-links or extra-index-url
+extra-index-url = [
+    "https://download.pytorch.org/whl/cu124",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["src/openpi"]
+pythonpath = ["src", "third_party/libero"]

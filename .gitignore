@@ -1,0 +1,23 @@
+# Archived local content (not for upload)
+old/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environments
+.venv/
+venv/
+
+# Experiment outputs
+wandb/
+checkpoints/
+data/
+*.log
+
+# OS / editor
+.DS_Store
+.idea/
